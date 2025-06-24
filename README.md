@@ -47,7 +47,7 @@ Images by PerOla Hammar and Gia Tu Tran, posted on Unsplash.
    pip install -r requirements.txt
    ```
 
-2. You can work with the script using two methods:
+2. You can work with the script using three methods:
 
    **Option A: Batch Processing Script**
    - Place images in the `task-images` folder (images in subfolders will not be processed)

@@ -35,7 +35,7 @@ NEGATIVE_PROMPT = "low quality, bad anatomy, bad hands, text, error, blurry, out
 FACE_NEGATIVE_PROMPT = "low quality, bad anatomy, distorted face, deformed face, disfigured face, unrealistic face, bad eyes, crossed eyes, misaligned eyes, bad nose, bad mouth, bad teeth, bad skin"
 
 # Processing strengths
-STRENGTH = 0.3 
+STRENGTH = 0.4 
 FACE_STRENGTH = 0.35 
 GUIDANCE_SCALE = 10.5
 FACE_GUIDANCE_SCALE = 8.0 
@@ -57,7 +57,7 @@ GRADIENT_CHECKPOINTING = True  # Memory optimization from training script
 
 # Post-processing parameters
 POST_PROCESS = True  # Enable post-processing
-CONTRAST_FACTOR = 1.2  # Post-processing contrast enhancement factor
+CONTRAST_FACTOR = 1.3  # Post-processing contrast enhancement factor
 SHARPNESS_FACTOR = 1.7  # Post-processing sharpness enhancement factor
 SATURATION_FACTOR = 1.1  # Post-processing saturation enhancement factor
 
