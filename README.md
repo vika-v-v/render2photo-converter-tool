@@ -100,7 +100,7 @@ To train your own LoRA-Adapter, you need to do the following:
       - 1.png
       - ...
     - metadata.json
-      ```json
+      ```
       {
         {
           id: 0,
