@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "efb5254b-68b6-4be4-bb82-b86b9c04d602",
+		"name": "Enhance Image",
+		"description": "# 📄 Get started here\n\nThis template contains a boilerplate for documentation that you can quickly customize and reuse.\n\n## 🔖 How to use this template\n\n- Replace the content given brackets (()) with your API's details.\n- Tips are formatted in `codespan` - feel free to read and remove them.\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe ((product name)) provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo start using the ((add APIs here)), you need to -\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- You must use a valid API Key to send requests to the API endpoints. You can get your API key from Postman's [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n- The API has [rate and usage limits](https://learning.postman.com/docs/developer/postman-api/postman-api-rate-limits/).\n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\n`Use this section to cover your APIs' terms of use. Include API limits, constraints, and relevant error codes, so consumers understand the permitted API usage and practices.`\n\n`The example given below is from The Postman API's documentation. Use it as a reference to write your APIs' terms of use.`\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\nIn case you have questions, go through our tutorials ((link to your video or help documentation here)). Or visit our FAQ page ((link to the relevant page)).\n\nOr you can check out our community forum, there’s a good chance our community has an answer for you. Visit our developer forum ((link to developer forum)) to review topics, ask questions, and learn from others.\n\n`You can also document or add links to libraries, code examples, and other resources needed to make a request.`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33852089",
+		"_collection_link": "https://viktoriia-team.postman.co/workspace/Upscaling~edf3d778-04dd-4170-99ae-479013b0a9fb/collection/33852089-efb5254b-68b6-4be4-bb82-b86b9c04d602?action=share&source=collection_link&creator=33852089"
+	},
+	"item": [
+		{
+			"name": "Show default settings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://10.128.39.228:5000/settings",
+					"protocol": "http",
+					"host": [
+						"10",
+						"128",
+						"39",
+						"228"
+					],
+					"port": "5000",
+					"path": [
+						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Process image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Image",
+							"description": "The image that must be processed",
+							"type": "file",
+							"src": "postman-cloud:///1f01f6bb-49d1-4300-b2ac-2c2742d3a058"
+						},
+						{
+							"key": "BASE_MODEL_PATH",
+							"value": "stabilityai/stable-diffusion-xl-base-1.0",
+							"description": "Base model that will be used for processing, default: StableDiffusion-XL",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "LORA_DIR",
+							"value": "lora_sdxl_render2photo_enhanced/lora-weights-epoch-15",
+							"description": "Low-Rank Adaptation is the layer that had the actual training on the office interrior images, it directly affects the generation quality. Preselected is lora_sdxl_render2photo_enhanced/lora-weights-epoch-15, which is the LoRA that had most training, but other LoRAs could be better in some cases. Available are the epochs 1-15 (just change the last number to select).",
+							"type": "text"
+						},
+						{
+							"key": "VAE_PATH",
+							"value": "stabilityai/sdxl-vae",
+							"description": "Variational Autoencoder, it acts as encoder (converts pixel space into latent space) and as decoder (converts back to pixels)",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "PROMPT",
+							"value": "high quality photograph, photorealistic, masterpiece, high quality, detailed, realistic, photorealistic, consistent shapes, consistent lighting, consistent shadows, preserve as many details from the original image as possible, 8k, 4k, sharp focus",
+							"description": "The overall prompt, must describe that the model must turn 3d-render to a photorealistic image",
+							"type": "text"
+						},
+						{
+							"key": "NEGATIVE_PROMPT",
+							"value": "low quality, bad anatomy, bad hands, text, error, blurry, out of focus, low resolution, cropped, worst quality, jpeg artifacts, signature, watermark, distorted",
+							"description": "What the model shouldn't generate",
+							"type": "text"
+						},
+						{
+							"key": "STRENGTH",
+							"value": "0.4",
+							"description": "How much the initial image should be changed, 0 - not changed at all, 1.0 - a completely new image. The model was trained on 0.4 strength.",
+							"type": "text"
+						},
+						{
+							"key": "GUIDANCE_SCALE",
+							"value": "6.0",
+							"description": "How much the model follows the prompt, higher values (15-20) could ensure the prompt is strictly followed, but the shapes might be unconsistent.",
+							"type": "text"
+						},
+						{
+							"key": "MAX_IMG_SIZE",
+							"value": "2048",
+							"description": "Some images are too big to process, this parameter controls the maximum size of the bigger side - the big image will be compressed automatically",
+							"type": "text"
+						},
+						{
+							"key": "UNET_RANK",
+							"value": "32",
+							"description": "Determines the capacity and strength of the model adaptation - higher values like 32 enable more significant changes to the base model's behavior but require more memory",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "TEXT_ENCODER_RANK",
+							"value": "8",
+							"description": "Controls how much the text understanding components of the model can be modified by the fine-tuning, with lower values like 8 using less memory but allowing fewer customizations to how prompts are interpreted",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "LORA_SCALE",
+							"value": "0.8",
+							"description": "Controls the intensity of the fine-tuning effects applied to the base model, with higher values (0.8-1.0) amplifying the custom behavior and lower values (0.0 - 0.3) preserving more of the original model's characteristics",
+							"type": "text"
+						},
+						{
+							"key": "NUM_STEPS",
+							"value": "50",
+							"description": "How many steps must be done to process the image. The more steps the better the image, but the longer it takes to process.",
+							"type": "text"
+						},
+						{
+							"key": "USE_CUSTOM_NOISE",
+							"value": "True",
+							"description": "Determines whether the model uses a predefined noise pattern during image generation, which helps ensure reproducible results from the same seed",
+							"type": "text"
+						},
+						{
+							"key": "SEED",
+							"value": "42",
+							"description": "You will get the same image if all parameters stay the same, if the seed changes, the image changes as well",
+							"type": "text"
+						},
+						{
+							"key": "POST_PROCESS",
+							"value": "True",
+							"description": "Wether the post processing should be applied (contrast, sharpness, saturation)",
+							"type": "text"
+						},
+						{
+							"key": "CONTRAST_FACTOR",
+							"value": "1.2",
+							"description": "In case POST_PROCESS is true, contols contrast",
+							"type": "text"
+						},
+						{
+							"key": "SHARPNESS_FACTOR",
+							"value": "1.7",
+							"description": "In case POST_PROCESS is true, contols sharpness",
+							"type": "text"
+						},
+						{
+							"key": "SATURATION_FACTOR",
+							"value": "1.1",
+							"description": "In case POST_PROCESS is true, contols saturation",
+							"type": "text"
+						},
+						{
+							"key": "ENABLE_FACE_ENHANCEMENT",
+							"value": "True",
+							"description": "Wether the model must process faces separately, this parameter is not fully functional yet",
+							"type": "text"
+						},
+						{
+							"key": "FACE_LORA_SCALE",
+							"value": "0.3",
+							"description": "In case ENABLE_FACE_ENHANCEMENT is true, controls the intensity of the fine-tuning effects applied to the base model when processing faces",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "FACE_PROMPT",
+							"value": "high quality photograph, photorealistic, masterpiece, perfect face details, realistic face features, high quality, detailed face, ultra realistic human face, perfect eyes, perfect skin texture, perfect facial proportions, clean render",
+							"description": "In case ENABLE_FACE_ENHANCEMENT is true, this prompt will be used to generate the face",
+							"type": "text"
+						},
+						{
+							"key": "FACE_NEGATIVE_PROMPT",
+							"value": "low quality, bad anatomy, distorted face, deformed face, disfigured face, unrealistic face, bad eyes, crossed eyes, misaligned eyes, bad nose, bad mouth, bad teeth, bad skin, ugly",
+							"description": "In case ENABLE_FACE_ENHANCEMENT is true, this negative prompt will be used for face generation",
+							"type": "text"
+						},
+						{
+							"key": "FACE_GUIDANCE_SCALE",
+							"value": "8.0",
+							"description": "In case ENABLE_FACE_ENHANCEMENT is true, how much the model follows the prompt for the faces",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "FACE_STRENGTH",
+							"value": "0.35",
+							"description": "In case ENABLE_FACE_ENHANCEMENT is true, how much the initial face should be changed",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "FACE_DETECTION_CONFIDENCE",
+							"value": "0.7",
+							"description": "In case ENABLE_FACE_ENHANCEMENT is true, determines how certain the face detection algorithm must be before identifying something as a face (0.1 - very unsertain, 1.0 - very sertain)",
+							"type": "text"
+						},
+						{
+							"key": "FACE_PADDING_PERCENT",
+							"value": "10",
+							"description": "Defines how much additional area around a detected face will be included during face-specific processing",
+							"type": "text"
+						},
+						{
+							"key": "FACE_NUM_STEPS",
+							"value": "10",
+							"description": "In case ENABLE_FACE_ENHANCEMENT is true, how many steps must be done to process the image",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://10.128.39.228:5000/process-file",
+					"protocol": "http",
+					"host": [
+						"10",
+						"128",
+						"39",
+						"228"
+					],
+					"port": "5000",
+					"path": [
+						"process-file"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		}
+	]
+}
