@@ -1,4 +1,4 @@
-# Render2Img Converter Tool
+# Render2Photo Converter Tool
 
 This project transforms 3D renders of office interiors into photorealistic images using LoRA-Adapter.
 
